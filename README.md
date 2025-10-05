@@ -15,10 +15,10 @@ Além das análises visuais, o projeto se destaca pelo uso de **medidas DAX avan
 ## ⚙️ Funcionalidades
 
 ✅ **Indicadores principais:**
-- **Total de Vendas:** 245,8 Mi  
-- **Vendas do Último Ano:** 232,3 Mi  
-- **Variação Anual:** +5,8%  
-- **Delta Absoluto:** +14 Mi  
+- **Total de Vendas**  
+- **Vendas do Último Ano**  
+- **Variação Anual**
+- **Delta Absoluto**
 
 ✅ **Análises interativas:**
 - *Sales by Business Line:* comparação entre Lubrificantes e Aditivos  
