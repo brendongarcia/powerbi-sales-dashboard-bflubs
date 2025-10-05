@@ -152,15 +152,6 @@ As relações foram criadas a partir da chave de data (`DateKey`) e das dimensõ
 
 ---
 
-## 👨‍💻 Autor
-
-**Brendon Garcia**  
-Desenvolvedor SQL | Analista de Dados  
-📧 *[seu-email-aqui]*  
-🔗 [LinkedIn](https://linkedin.com/in/seu-perfil)
-
----
-
 ## 🏷️ Tags
 
 `Power BI` `DAX` `Dashboard` `Data Analysis` `BI` `Data Visualization` `Business Intelligence`
