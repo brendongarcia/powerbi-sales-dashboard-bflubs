@@ -35,23 +35,31 @@ As medidas foram criadas em **DAX** para permitir **comparações automáticas e
 
 ### 🔹 Total de Vendas
 ```DAX
-Sales =
-SUM ( fat_sales[SalesAmount] )
+Sales = SUM(
+     fat_sales[Revenue]
+)
 ```
 
 ### 🔹 Vendas Ano Anterior (comparativo dinâmico)
 ```DAX
-Sales Last Year =
-CALCULATE (
-    [Sales],
-    SAMEPERIODLASTYEAR ( dim_calendario[Date] )
-)
+Sales Last Year = 
+    VAR YoY =
+    CALCULATE(
+        [Sales],
+        SAMEPERIODLASTYEAR(dim_calendario[Date])
+    )
+RETURN
+    IF(
+        [Sales],
+        YoY
+    )
+
 ```
 
 ### 🔹 Vendas Acumuladas (Year to Date)
 ```DAX
-Sales YTD =
-TOTALYTD (
+Sales Year to date = 
+TOTALYTD(
     [Sales],
     dim_calendario[Date]
 )
@@ -59,20 +67,20 @@ TOTALYTD (
 
 ### 🔹 Vendas Acumuladas Ano Anterior
 ```DAX
-Sales YTD Last Year =
-CALCULATE (
-    [Sales YTD],
-    SAMEPERIODLASTYEAR ( dim_calendario[Date] )
+Sales Year to date Last Year = 
+CALCULATE(
+    [Sales Year to date],
+    DATEADD(
+        dim_calendario[Date],
+        -1,
+        YEAR
+    )
 )
 ```
 
 ### 🔹 Delta Acumulado (diferença entre anos)
 ```DAX
-Sales YTD Delta =
-VAR CurrentYTD = [Sales YTD]
-VAR LastYTD = [Sales YTD Last Year]
-RETURN
-    CurrentYTD - LastYTD
+Sales Year to date Last Year Delta = [Sales Year to date] - [Sales Year to date Last Year]
 ```
 
 ### 🔹 Percentual de Crescimento Acumulado
@@ -86,15 +94,11 @@ RETURN
 
 ### 🔹 Variação Mensal Dinâmica
 ```DAX
-Sales Month over Month % =
-VAR CurrentMonth = [Sales]
-VAR LastMonth =
-    CALCULATE (
-        [Sales],
-        DATEADD ( dim_calendario[Date], -1, MONTH )
-    )
-RETURN
-    DIVIDE ( CurrentMonth - LastMonth, LastMonth, 0 )
+Sales Year to date Last Year Delta % = 
+DIVIDE(
+    [Sales Year to date Last Year Delta],
+    [Sales Year to date Last Year]
+)
 ```
 
 Essas medidas foram otimizadas com o uso de variáveis (`VAR`) e funções de tempo (`DATEADD`, `SAMEPERIODLASTYEAR`, `TOTALYTD`) para tornar o modelo **dinâmico e eficiente**.
