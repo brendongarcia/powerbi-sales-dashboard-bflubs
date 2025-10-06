@@ -2,6 +2,8 @@
 
 ![Dashboard Preview](./images/dashboard_preview.png)
 
+[🔗 **Acessar Dashboard Publicado no Power BI**](https://app.powerbi.com/view?r=SEU-LINK-AQUI)
+
 ## 🧠 Sobre o projeto
 
 Este projeto apresenta um **Dashboard de Vendas desenvolvido no Power BI**, com foco em **análise de desempenho anual**, **comparativos históricos** e **segmentação por área de negócio**.  
