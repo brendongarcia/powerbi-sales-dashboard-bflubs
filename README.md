@@ -4,30 +4,89 @@
 
 [🔗 **Acessar Dashboard Publicado no Power BI**](https://app.powerbi.com/links/ncAn-Syu1Y?ctid=ba201131-9621-49ca-b50d-57d968b4ac35&pbi_source=linkShare&bookmarkGuid=cfe745d3-1de5-4b23-8648-a082f7c032d6)
 
+---
+
+## ⬇️ Download rápido
+
+> Pré-requisito para abrir o arquivo: [**Power BI Desktop**](https://powerbi.microsoft.com/desktop/) (gratuito, Windows).
+
+### Opção 1 — Só o dashboard `.pbix` (~28 MB) — **recomendado**
+
+👉 [**Baixar bf_lubs_sales.pbix**](https://github.com/brendongarcia/powerbi-sales-dashboard-bflubs/raw/main/bf_lubs_sales.pbix)
+
+O `.pbix` já contém os dados carregados. Basta baixar e abrir — não precisa da pasta `data/`.
+
+### Opção 2 — Projeto completo `.zip` (~125 MB)
+
+👉 [**Baixar ZIP do repositório**](https://github.com/brendongarcia/powerbi-sales-dashboard-bflubs/archive/refs/heads/main.zip)
+
+Inclui o `.pbix` **+** a base de dados bruta (CSVs mensais, XLSX, TXT) para refazer o ETL do zero.
+Alternativa pela interface: botão verde **`<> Code`** → **`Download ZIP`**.
+
+### Opção 3 — Git
+
+```bash
+git clone https://github.com/brendongarcia/powerbi-sales-dashboard-bflubs.git
+```
+
+Só o dashboard, pulando os ~95 MB de dados brutos:
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/brendongarcia/powerbi-sales-dashboard-bflubs.git
+cd powerbi-sales-dashboard-bflubs
+git sparse-checkout set --no-cone bf_lubs_sales.pbix
+```
+
+### Depois de abrir
+
+1. Abra `bf_lubs_sales.pbix` no Power BI Desktop.
+2. Explore os filtros interativos (ano, divisão, planta).
+3. Se for atualizar os dados: **Transformar dados → Configurações da fonte de dados** e aponte para a pasta `data/` local.
+
+---
+
 ## 🧠 Sobre o projeto
 
-Este projeto apresenta um **Dashboard de Vendas desenvolvido no Power BI**, com foco em **análise de desempenho anual**, **comparativos históricos** e **segmentação por área de negócio**.  
+Este projeto apresenta um **Dashboard de Vendas desenvolvido no Power BI**, com foco em **análise de desempenho anual**, **comparativos históricos** e **segmentação por área de negócio**.
 
-O painel foi criado para a empresa fictícia **BF.Lubs**, com o objetivo de **monitorar vendas, comparar resultados com o ano anterior e identificar oportunidades de crescimento**.  
+O painel foi criado para a empresa fictícia **BF.Lubs**, com o objetivo de **monitorar vendas, comparar resultados com o ano anterior e identificar oportunidades de crescimento**.
 
 Além das análises visuais, o projeto se destaca pelo uso de **medidas DAX avançadas**, que permitem comparativos dinâmicos entre períodos e cálculos acumulados (YTD), otimizando a tomada de decisão gerencial.
+
+---
+
+## 📁 Estrutura do repositório
+
+```
+├── bf_lubs_sales.pbix     # dashboard (abra este arquivo)  ~28 MB
+├── data/                  # base de dados bruta            ~95 MB
+│   ├── Sales/             # 48 CSVs mensais (2019–2022)
+│   ├── 2022 Sales.xlsx
+│   ├── deliveries.csv
+│   ├── tbl_Customer.xlsx
+│   ├── tbl_Location.xlsx
+│   ├── tbl_Material.xlsx
+│   └── tbl_Plant.txt
+└── images/
+    └── dashboard_preview.png
+```
 
 ---
 
 ## ⚙️ Funcionalidades
 
 ✅ **Indicadores principais:**
-- **Total de Vendas**  
-- **Vendas do Último Ano**  
+- **Total de Vendas**
+- **Vendas do Último Ano**
 - **Variação Anual**
 - **Delta Absoluto**
 
 ✅ **Análises interativas:**
-- *Sales by Business Line:* comparação entre Lubrificantes e Aditivos  
-- *Sales by Division:* desempenho das divisões regionais  
-- *Sales by Plant:* análise de produção por planta industrial  
-- *Sales by Month:* comparativo mês a mês entre anos  
-- *Sales Year to Date:* acompanhamento acumulado das vendas  
+- *Sales by Business Line:* comparação entre Lubrificantes e Aditivos
+- *Sales by Division:* desempenho das divisões regionais
+- *Sales by Plant:* análise de produção por planta industrial
+- *Sales by Month:* comparativo mês a mês entre anos
+- *Sales Year to Date:* acompanhamento acumulado das vendas
 
 ---
 
@@ -55,7 +114,6 @@ RETURN
         [Sales],
         YoY
     )
-
 ```
 
 ### 🔹 Vendas Acumuladas (Year to Date)
@@ -110,10 +168,10 @@ Essas medidas foram otimizadas com o uso de variáveis (`VAR`) e funções de te
 ## 📈 Resultados e Insights
 
 O dashboard permite:
-- Acompanhar **tendências mensais** de vendas.  
-- Identificar **crescimento acumulado** por período.  
-- Visualizar **participação por divisão e planta industrial**.  
-- Comparar **vendas correntes vs. ano anterior** com indicadores percentuais.  
+- Acompanhar **tendências mensais** de vendas.
+- Identificar **crescimento acumulado** por período.
+- Visualizar **participação por divisão e planta industrial**.
+- Comparar **vendas correntes vs. ano anterior** com indicadores percentuais.
 
 Esses recursos tornam o painel ideal para **análises estratégicas de performance comercial**.
 
@@ -121,17 +179,15 @@ Esses recursos tornam o painel ideal para **análises estratégicas de performan
 
 ## 🛠️ Tecnologias utilizadas
 
-- **Power BI Desktop**  
-- **DAX (Data Analysis Expressions)**  
-- **Power Query (ETL)**  
-- **Modelagem de Dados Relacional**  
+- **Power BI Desktop**
+- **DAX (Data Analysis Expressions)**
+- **Power Query (ETL)**
+- **Modelagem de Dados Relacional**
 - **Design de Dashboard e Visualização de Dados**
 
 ---
 
-## 💡 Estrutura de Dados
-
-O modelo de dados foi construído com base nas seguintes tabelas:
+## 💡 Modelo de dados
 
 | Tabela | Descrição |
 |--------|------------|
@@ -142,15 +198,6 @@ O modelo de dados foi construído com base nas seguintes tabelas:
 | `dim_plant` | Plantas industriais da empresa |
 
 As relações foram criadas a partir da chave de data (`DateKey`) e das dimensões de cliente, produto e planta.
-
----
-
-## 🚀 Como visualizar
-
-1. Baixe o arquivo [`bf_lubs_sales.pbix`](./bf_lubs_sales.pbix).  
-2. Abra o arquivo no **Power BI Desktop**.  
-3. Explore os filtros interativos (ano, divisão, planta, etc).  
-4. Analise os indicadores principais e gráficos dinâmicos.  
 
 ---
 
